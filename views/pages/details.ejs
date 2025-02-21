@@ -5,26 +5,45 @@
     <%- include("../partials/header") %>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
-    <div class="container mx-auto p-5">
-        <h1 class="text-3xl font-bold text-center mb-5 capitalize">
-            <%= pokemon.name %>
-        </h1>
-        <div class="flex flex-col items-center">
-            <img src="<%= pokemon.sprites.front_default %>" alt="<%= pokemon.name %>" class="w-40 h-40" />
-            <p class="text-lg font-semibold">Height: <%= pokemon.height %>
-            </p>
-            <p class="text-lg font-semibold">Weight: <%= pokemon.weight %>
-            </p>
-            <p class="text-lg font-semibold">
-                Type: <%= pokemon.types.map(t=> t.type.name).join(', ') %>
-            </p>
-        </div>
-        <div class="text-center mt-5">
-            <a href="/" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Back</a>
-        </div>
+<body class="flex justify-center items-center min-h-screen bg-gray-100">
+
+    <!-- Pokédex Container -->
+    <div class="relative w-[450px] h-[680px] bg-cover bg-center" style="background-image: url('/images/pokedex.png');">
+
+        <!-- Screen (Pokémon Details) -->
+<div class="absolute top-[32%] left-[23%] w-[210px] h-[150px] 
+            bg-transparent flex flex-col items-center justify-center text-center p-2 overflow-hidden">
+    <img src="<%= pokemon.sprites.front_default %>" alt="<%= pokemon.name %>" class="w-24 h-24 object-contain" />
+</div>
+
+<div class="absolute top-[46.5%] left-[43%] w-[210px] h-[150px] 
+            bg-transparent flex flex-col items-center justify-center text-center p-2 overflow-hidden">
+    <h1 class="text-2xl font-bold text-gray-600 capitalize mb-1">
+        <%= pokemon.name %>
+    </h1>
+</div>
+
+<div class="absolute top-[65%] left-[43%] transform -translate-x-1/2 w-[250px] 
+            bg-transparent flex flex-col items-start text-left p-2 overflow-hidden">
+    <p class="text-lg font-bold text-white drop-shadow-[2px_2px_0px_black]">
+        Height: <%= pokemon.height %>
+    </p>
+    <p class="text-lg font-bold text-white drop-shadow-[2px_2px_0px_black]">
+        Weight: <%= pokemon.weight %>
+    </p>
+    <p class="text-lg font-bold text-white drop-shadow-[2px_2px_0px_black]">
+        Type: <%= pokemon.types.map(t=> t.type.name).join(', ') %>
+    </p>
+</div>
+<!-- Back Button -->
+<a href="javascript:history.back()" class="absolute top-[85%] left-[40%] px-4 py-2 
+            bg-red-600 text-white font-bold rounded-lg shadow-md 
+            hover:bg-red-700 transition duration-200">
+    Back
+</a>
+
     </div>
-    <%- include("../partials/footer") %>
+    <!-- <%- include("../partials/footer") %> -->
 </body>
 
 </html>
